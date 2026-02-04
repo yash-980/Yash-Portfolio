@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
+* {
+  cursor: url("/cursor.png") 5 5, auto;
+}
+
 body {
   overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
