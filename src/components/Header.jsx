@@ -1,7 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FiGithub, FiLinkedin, FiMenu, FiX } from "react-icons/fi";
 import { useState } from "react";
-import { a, div } from "framer-motion/client";
 
 const Header = () => {
     {/* toggle menu open close */ }
@@ -57,7 +56,7 @@ const Header = () => {
                                 damping: 20,
                                 delay: 0.7 + index * 0.2,
                             }}
-                            className="relative text-gray-800 dark:text-gray-200 hover:violet-600 dark:hover:text-violet-400 font-medium transition-colors duration-300 group"
+                            className="relative text-gray-800 dark:text-gray-200 hover:text-violet-600 dark:hover:text-violet-400 font-medium transition-colors duration-300 group"
                             href="#">
                             {item}
                             <span className="absolute bottom-0 left-0 w-full h-0.5 bg-violet-600 dark:bg-violet-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
@@ -77,7 +76,7 @@ const Header = () => {
                         transition={{
                             delay: 0.8, dutration: 0.5
                         }}
-                        className="text-gray-600 dark:text-gray-300 hover;text-violet-600 dark:hover:text-violet-400 transition-colors duration-300" href="https://github.com/yash-980" target="_blank">
+                        className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300" href="https://github.com/yash-980" target="_blank">
                         <FiGithub className="w-5 h-5" />
                     </motion.a>
 
@@ -87,7 +86,7 @@ const Header = () => {
                         initial={{ opacity: 0, scale: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{
-                            delay: 0.8, dutration: 0.5
+                            delay: 0.8, duration: 0.5
                         }}
                         className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors duration-300" href="https://linkedin.com/in/yash-kolte" target="_blank">
                         <FiLinkedin className="w-5 h-5" />
@@ -97,7 +96,7 @@ const Header = () => {
                     {/* Hiire Me button  */}
 
                     <motion.button
-                    onClick={openContactForm}
+                        onClick={openContactForm}
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{
@@ -125,13 +124,13 @@ const Header = () => {
 
                 {/* Mobile Toggle Button */}
                 <motion.div
-                initial={{ opacity: 0, height:0 }}
-                animate={{
-                    opacity: isOpen ? 1 : 0,
-                    height: isOpen ? "auto" : 0,
-                }}
-                transition={{ duration: 0.5 }}
-                 className="md:hidden overflow-hidden fixed top-16 left-0 w-full bg-white dark:bg-gray-900 shadow-lg px-4 py-5 space-y-5 z-50">
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{
+                        opacity: isOpen ? 1 : 0,
+                        height: isOpen ? "auto" : 0,
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className="md:hidden overflow-hidden fixed top-16 left-0 w-full bg-white dark:bg-gray-900 shadow-lg px-4 py-5 space-y-5 z-50">
                     <nav className="flex flex-col space-y-3">
                         {["Home", "About", "Projects", "Experience", "Contact"].map((item) => (
                             <a
@@ -146,35 +145,94 @@ const Header = () => {
                     </nav>
 
                     <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                     <div className="flex space-x-5">
-                        <a href="https://github.com/yash-980">
-                        <FiGithub  className="h-5 w-5 text-gray-300" />
-                        </a>
+                        <div className="flex space-x-5">
+                            <a href="https://github.com/yash-980">
+                                <FiGithub className="h-5 w-5 text-gray-300" />
+                            </a>
 
-                         <a href="https://github.com/yash-980">
-                        <FiLinkedin  className="h-5 w-5 text-gray-300" />
-                        </a>
+                            <a href="https://github.com/yash-980">
+                                <FiLinkedin className="h-5 w-5 text-gray-300" />
+                            </a>
 
-                     </div>
-                      <button
-                      onClick={() => {
-                        toggleMenu()
-                      }}
-                      className="mt-4 block w-full px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-violet-400 font-bold">
+                        </div>
+                        <button
+                            onClick={() => {
+                                toggleMenu()
+                                openContactForm()
+                            }}
+                            className="mt-4 block w-full px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-violet-400 font-bold">
                             Contact Me
                         </button>
-                </div>
+                    </div>
                 </motion.div>
 
                 {/* Contact Form  */}
-                {contactFormOpen && (
-                  <div className="fixed inset-0 bg-black/50 background-blur-sm z-50 flex items-center p-4">
 
-                  </div>
-                )}
+                <AnimatePresence>
+                    {contactFormOpen && (
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="fixed inset-0 bg-black/50 background-blur-sm z-50 flex items-center justify-center p-4"
+                        >
+
+                            <motion.div
+                                initial={{ scale: 0.8, opacity: 0, y: 30 }}
+                                animate={{ scale: 1, opacity: 1, y: 0 }}
+                                exit={{ scale: 0.8, opacity: 0, y: 30 }}
+                                transition={{
+                                    type: "spring",
+                                    damping: 30,
+                                    stiffness: 200,
+                                    duration: 0.8
+                                }}
+                                className="bg-white dark:bg-gray-800 rounded-xl shadow-xl w-full max-w-md p-6">
+                                <div className="flex justify-between items-center mb-4">
+                                    <h1 className="text-3xl font-bold text-gray-300">Get In Touch</h1>
+
+                                    <button onClick={closeContactForm}>
+                                        <FiX className="w-5 h-5 text-gray-300 font-extrabold" />
+
+                                    </button>
+
+                                </div>
+
+                                {/* INPUTfORM */}
+
+                                <form className="space-y-4">
+                                    <div>
+                                        <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+                                            Name
+                                        </label>
+                                        <input type="text" id="name" placeholder="Your Name" className="mb-3 w-full  px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-gray-700 text-white" />
+                                        <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+                                            Email
+                                        </label>
+                                        <input type="email" id="email" placeholder="Your Email" className="mb-3 w-full  px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-gray-700 text-white" />
+                                        <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+                                            Message
+                                        </label>
+                                        <textarea rows="4" type="text" id="message" placeholder="How Can I Help You?" className="w-full  px-4 py-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-gray-700 text-white" />
+                                    </div>
+
+                                    <motion.button
+                                        type="submit"
+                                        whileHover={{ scale: 1.03 }}
+                                        whileTap={{ scale: 0.97 }}
+                                        className="w-full px-4 py-2 bg-gradient-to-r from-violet-600 to-violet-400 hover:from-violet-700 hover:to-purple-700 transition-all duration-300 rounded-lg shadow-md hover:shadow-lg hover:shadow-violet-600/50">
+                                        Send Message
+                                    </motion.button>
+                                </form>
+                            </motion.div>
+
+                        </motion.div>
+                    )}
+
+                </AnimatePresence>
             </div>
-
-        </header>
+        </header >
     )
 }
 
