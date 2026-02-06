@@ -19,14 +19,13 @@ const Computers = ({ isMobile }) => {
         shadow-mapSize={1024}
       />
      <pointLight intensity={2} position={[0,0.5,0]} />
-      <primitive
-        object={computer.scene}
-        // INCREASED SCALE: bumped up from 0.75 to 0.85 for better visibility
-        scale={isMobile ? 0.6 : 0.85} 
-        // ADJUSTED POSITION: [x, y, z] - lowered the y value to sit nicely
-        position={isMobile ? [10, -3, -2.2] : [-1  , -0.5, -1.5]}
-        rotation={[-0.01, -0.2, -0.2]}
-      />
+     <primitive
+  object={computer.scene}
+  scale={isMobile ? 0.5 : 0.85}           // smaller on mobile
+  position={isMobile ? [10, -0.3, -2.2] : [-1, -0.5, -1.5]}  // moved up on mobile
+  rotation={[-0, -0.2, -0.2]}
+/>
+
     </mesh>
   );
 };
