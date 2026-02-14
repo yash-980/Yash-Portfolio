@@ -41,7 +41,7 @@ const HeroSection = () => {
                 
             </div>
 
-             <div className="absolute bottom-5 w-full flex justify-center items-center z-20">
+             <div className="absolute bottom-0 w-full flex justify-center items-center z-20">
         <a href="#about" className="pointer-events-auto">
           <div className="w-[28px] h-[54px] rounded-3xl border-4 border-secondary flex justify-center items-start p-1">
             <motion.div

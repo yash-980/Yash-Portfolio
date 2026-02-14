@@ -22,7 +22,7 @@ const Computers = ({ isMobile }) => {
       <primitive
         object={computer.scene}
         scale={isMobile ? [0.6, 0.5, 0.5] : [0.85, 0.85, 0.85]}   // 👈 narrower width on mobile
-        position={isMobile ? [1.5, 0.6, -0.5] : [-1, -0.8, -1.5]} 
+        position={isMobile ? [1.5, 0.6, -0.5] : [-1, -0.4, -1.5]} 
         rotation={[-0, -0.2, -0.2]}
       />
 

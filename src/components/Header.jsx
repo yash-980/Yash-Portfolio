@@ -57,7 +57,7 @@ const Header = () => {
                                 delay: 0.7 + index * 0.2,
                             }}
                             className="relative text-gray-800 dark:text-gray-200 hover:text-violet-600 dark:hover:text-violet-400 font-medium transition-colors duration-300 group"
-                            href="#">
+                            href={`#${item.toLowerCase()}`}>
                             {item}
                             <span className="absolute bottom-0 left-0 w-full h-0.5 bg-violet-600 dark:bg-violet-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                         </motion.a>
@@ -136,7 +136,7 @@ const Header = () => {
                             <a
                                 key={item}
                                 onClick={toggleMenu}
-                                href="#"
+                                href={`#${item.toLowerCase()}`}
                                 className="text-gray-300 font-medium py-2 "
                             >
                                 {item}
