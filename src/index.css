@@ -26,3 +26,26 @@ body {
   background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
   background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
 }
+
+
+.intro {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 9999;
+}
+
+.intro-mask {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* 🔥 THIS IS THE SECRET */
+}
+
+.intro-text {
+  color: white;
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
